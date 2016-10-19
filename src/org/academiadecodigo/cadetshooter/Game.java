@@ -97,4 +97,12 @@ public class Game implements MouseHandler {
         //System.out.println(e);
 
     }
+
+    public Rectangle getDisplay() {
+        return display;
+    }
+
+    public void setDisplay(Rectangle display) {
+        this.display = display;
+    }
 }
