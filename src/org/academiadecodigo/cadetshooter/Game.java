@@ -16,37 +16,49 @@ public class Game implements MouseHandler {
     GameObject[] gameObjects;
     GameObject target;
     Rectangle display;
+    int score;
 
 
-    public void init(){
+    public void init() {
 
         gameObjects = new GameObject[10];
         Rectangle rect;
+        this.score = 0;
 
-        display = new Rectangle(0,0,1280,760);
+        display = new Rectangle(0, 0, 1280, 760);
 
-        for(int i = 0; i < gameObjects.length; i++){
-            int randX = RNG.getRandom(0, display.getWidth()-SIZE);
-            int randY = RNG.getRandom(0, display.getHeight()-SIZE);
+        for (int i = 0; i < gameObjects.length; i++) {
+            int randX = RNG.getRandom(0, display.getWidth() - SIZE);
+            int randY = RNG.getRandom(0, display.getHeight() - SIZE);
             rect = new Rectangle(randX, randY, SIZE, SIZE);
-            gameObjects[i] = new GameObject(rect);
+            gameObjects[i] = new GameObject(rect, 100);
         }
     }
 
     public void start() throws InterruptedException {
 
         Mouse m = new Mouse(this);
+        int count = 0;
         m.addEventListener(MouseEventType.MOUSE_CLICKED);
         m.addEventListener(MouseEventType.MOUSE_MOVED);
 
         display.draw();
 
-        for(int i = 0; i < gameObjects.length; i++){
+        for (int i = 0; i < gameObjects.length; i++) {
 
-            while(!gameObjects[i].used()){
-                target = gameObjects[i];
-                target.getTarget().fill();
+            count = 0;
+            target = gameObjects[i];
+            target.getTarget().fill();
+            while (count < 50) {
+                target.moveInDirection();
+                Thread.sleep(100);
+                count++;
             }
+            //Thread.sleep(2000);
+            target.getTarget().delete();
+
+
+            System.out.println(score);
         }
     }
 
@@ -60,21 +72,29 @@ public class Game implements MouseHandler {
         if (e.getX() > target.getTarget().getX() && e.getX() < (target.getTarget().getX() + target.getTarget().getWidth())
 
                 && e.getY() > target.getTarget().getY() && e.getY() < (target.getTarget().getY() + target.getTarget().getHeight())) {
-            target.setFlag(true);
+            increaseScore();
+            target.setUsed(true);
+
             target.getTarget().delete();
             System.out.println("Very nice");
-        }
-        else{
+        } else {
             System.out.println("Fuck this shit");
 
 
         }
     }
 
+    public void increaseScore() {
+        if (!target.isUsed()) {
+            this.score += target.getPoints();
+        }
+
+    }
+
     @Override
     public void mouseMoved(MouseEvent e) {
 
-        System.out.println(e);
+        //System.out.println(e);
 
     }
 }
