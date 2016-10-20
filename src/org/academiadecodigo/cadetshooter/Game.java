@@ -12,6 +12,7 @@ import org.academiadecodigo.simplegraphics.mouse.MouseHandler;
  */
 public class Game implements MouseHandler {
 
+    private static final int FIX = 25; //This is the pedreiro fix to the simple graphics Y coordinate bug
     private static final int SIZE = 100;
     GameObject[] gameObjects;
     GameObject target;
@@ -50,7 +51,6 @@ public class Game implements MouseHandler {
             target = gameObjects[i];
             target.getTarget().fill();
             while (count < 50) {
-                target.moveInDirection();
                 Thread.sleep(100);
                 count++;
             }
@@ -71,7 +71,7 @@ public class Game implements MouseHandler {
 
         if (e.getX() > target.getTarget().getX() && e.getX() < (target.getTarget().getX() + target.getTarget().getWidth())
 
-                && e.getY() > target.getTarget().getY() && e.getY() < (target.getTarget().getY() + target.getTarget().getHeight())) {
+                && e.getY()+FIX > target.getTarget().getY() + FIX && e.getY() + FIX < (target.getTarget().getY() + FIX + target.getTarget().getHeight())) {
             increaseScore();
             target.setUsed(true);
 

@@ -2,84 +2,46 @@ package org.academiadecodigo.cadetshooter.gameobjects;
 
 
 import org.academiadecodigo.cadetshooter.Game;
+import org.academiadecodigo.cadetshooter.position.*;
+import org.academiadecodigo.cadetshooter.simplegfx.SimpleGfxGrid;
+import org.academiadecodigo.cadetshooter.simplegfx.SimpleGridPosition;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 
 
 /**
  * Created by codecadet on 18/10/16.
  */
-public class GameObject {
+abstract public class GameObject {
 
-    Rectangle target;
-    boolean flag;
-    int points;
+    //This needs to be changed to host a picture instead of a rectangle. The rectangle version is debug only
 
-    public GameObject(Rectangle target, int points) {
+    private Rectangle target;
+    private boolean flag;
+    private int points;
+    private SimpleGridPosition pos;
+    private SimpleGfxGrid grid;
+
+    public GameObject(Rectangle target, int points, SimpleGfxGrid grid) {
         this.target = target;
+        this.pos = new SimpleGridPosition(target.getX(), target.getY(), grid);
         this.points = points;
     }
 
-    public void moveInDirection(Direction direction, int distance){
-
-        //we need to move the target in a given direction for a few cycles (the cycles aren't defined here)
-        switch (direction) {
-
-            case UP:
-                moveUp(distance);
-                break;
-            case DOWN:
-                moveDown(distance);
-                break;
-            case LEFT:
-                moveLeft(distance);
-                break;
-            case RIGHT:
-                moveRight(distance);
-                break;
-        }
-
-
+    public SimpleGridPosition getPos() {
+        return pos;
     }
 
-    public void moveUp(int dist) {
-
-        int maxRowsUp = dist <  ? dist : getRow();
-        setPos(getCol(), getRow() - maxRowsUp);
-
+    public void setPos(SimpleGridPosition pos) {
+        this.pos = pos;
     }
 
-    /**
-     * Moves the position down
-     *
-     * @param dist the number of positions to move
-     */
-    public void moveDown(int dist) {
-
-        int maxRowsDown = dist > getGrid().getRows() - (getRow() + 1) ? getGrid().getRows() - (getRow() + 1) : dist;
-        setPos(getCol(), getRow() + maxRowsDown);
-
+    public SimpleGfxGrid getGrid() {
+        return grid;
     }
 
-    /**
-     * Moves the position left
-     *
-     * @param dist the number of positions to move
-     */
-    public void moveLeft(int dist) {
-
-        int maxRowsLeft = dist < getCol() ? dist : getCol();
-        setPos(getCol() - maxRowsLeft, getRow());
-
+    public void setGrid(SimpleGfxGrid grid) {
+        this.grid = grid;
     }
-
-    /**
-     * Moves the position right
-     *
-     * @param dist the number of positions to move
-     */
-    public void moveRight(int dist) {
-        int maxRowsRight = dist > getGrid().getCols() - (getCol() + 1) ? getGrid().getCols() - (getCol() + 1) : dist;
-        setPos(getCol() + maxRowsRight, getRow());
 
     public Rectangle getTarget() {
         return target;
@@ -104,4 +66,6 @@ public class GameObject {
     public void setPoints(int points) {
         this.points = points;
     }
+
+    public abstract void moveInDirection(GridDirection direction, int distance);
 }
