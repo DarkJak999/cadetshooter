@@ -11,7 +11,7 @@ import org.academiadecodigo.cadetshooter.position.*;
  */
 public class SimpleGfxGrid implements Grid {
 
-    public static final int PADDING = 15;
+    public static final int PADDING = 10;
     public static final int CELL_SIZE = 10;
     private int cols;
     private int rows;
@@ -32,6 +32,11 @@ public class SimpleGfxGrid implements Grid {
         display = new Rectangle(PADDING, PADDING, getWidth(), getHeight());
         display.draw();
 
+    }
+
+    public void delete(){
+
+        display.delete();
     }
 
     /**
@@ -55,7 +60,7 @@ public class SimpleGfxGrid implements Grid {
      * @return the width of the grid
      */
     public int getWidth() {
-        return cols * CELL_SIZE;
+        return cols;
     }
 
     /**
@@ -63,7 +68,7 @@ public class SimpleGfxGrid implements Grid {
      * @return the height of the grid
      */
     public int getHeight() {
-        return rows * CELL_SIZE;
+        return rows;
     }
 
     /**

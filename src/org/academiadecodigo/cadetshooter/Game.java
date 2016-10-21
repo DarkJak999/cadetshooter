@@ -1,6 +1,9 @@
 package org.academiadecodigo.cadetshooter;
 
 import org.academiadecodigo.cadetshooter.gameobjects.GameObject;
+import org.academiadecodigo.cadetshooter.gameobjects.Padawan;
+import org.academiadecodigo.cadetshooter.position.GridDirection;
+import org.academiadecodigo.cadetshooter.simplegfx.SimpleGfxGrid;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 import org.academiadecodigo.simplegraphics.mouse.Mouse;
 import org.academiadecodigo.simplegraphics.mouse.MouseEvent;
@@ -16,7 +19,7 @@ public class Game implements MouseHandler {
     private static final int SIZE = 100;
     GameObject[] gameObjects;
     GameObject target;
-    Rectangle display;
+    SimpleGfxGrid display;
     int score;
 
 
@@ -26,13 +29,14 @@ public class Game implements MouseHandler {
         Rectangle rect;
         this.score = 0;
 
-        display = new Rectangle(0, 0, 1280, 760);
+        display = new SimpleGfxGrid(1280, 760);
+        display.init();
 
         for (int i = 0; i < gameObjects.length; i++) {
-            int randX = RNG.getRandom(0, display.getWidth() - SIZE);
-            int randY = RNG.getRandom(0, display.getHeight() - SIZE);
+            int randX = RNG.getRandom(0, display.getCols() - SIZE);
+            int randY = RNG.getRandom(0, display.getRows() - SIZE);
             rect = new Rectangle(randX, randY, SIZE, SIZE);
-            gameObjects[i] = new GameObject(rect, 100);
+            gameObjects[i] = new Padawan(rect, 100, display);
         }
     }
 
@@ -43,17 +47,18 @@ public class Game implements MouseHandler {
         m.addEventListener(MouseEventType.MOUSE_CLICKED);
         m.addEventListener(MouseEventType.MOUSE_MOVED);
 
-        display.draw();
 
         for (int i = 0; i < gameObjects.length; i++) {
 
             count = 0;
             target = gameObjects[i];
             target.getTarget().fill();
-            while (count < 50) {
-                Thread.sleep(100);
+            while (count < 10) {
+                target.moveInDirection(target.getCurrentDirection(),100);
+                Thread.sleep(10);
                 count++;
             }
+            System.out.println(i);
             //Thread.sleep(2000);
             target.getTarget().delete();
 
@@ -76,9 +81,9 @@ public class Game implements MouseHandler {
             target.setUsed(true);
 
             target.getTarget().delete();
-            System.out.println("Very nice");
+            System.out.println("Clicked on target");
         } else {
-            System.out.println("Fuck this shit");
+            System.out.println("Clicked out of target");
 
 
         }
@@ -98,11 +103,11 @@ public class Game implements MouseHandler {
 
     }
 
-    public Rectangle getDisplay() {
+    public SimpleGfxGrid getDisplay() {
         return display;
     }
 
-    public void setDisplay(Rectangle display) {
+    public void setDisplay(SimpleGfxGrid display) {
         this.display = display;
     }
 }

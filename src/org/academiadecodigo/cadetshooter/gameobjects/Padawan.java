@@ -16,22 +16,23 @@ public class Padawan extends GameObject implements Movable{
         super(target, points, grid);
     }
 
-
     public void moveInDirection(GridDirection direction, int distance) {
 
         int iCol = super.getPos().getCol();
         int iRow = super.getPos().getRow();
 
-        moveInDirection(direction, distance);
+        getPos().moveInDirection(direction, distance);
 
         int dx = super.getPos().getCol() - iCol;
-        int dy = super.getPos().getRow() -iRow;
+        int dy = super.getPos().getRow() - iRow;
 
         getTarget().translate(dx, dy);
     }
 
     @Override
-    public void move() {
+    public void move(GridDirection direction, int distance) {
 
     }
+
+
 }
