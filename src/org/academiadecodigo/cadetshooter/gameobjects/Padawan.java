@@ -3,6 +3,7 @@ package org.academiadecodigo.cadetshooter.gameobjects;
 import org.academiadecodigo.cadetshooter.simplegfx.SimpleGfxGrid;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 import org.academiadecodigo.cadetshooter.position.*;
+import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 
 /**
  * Created by codecadet on 19/10/16.
@@ -11,9 +12,9 @@ public class Padawan extends GameObject implements Movable{
 
     //This class should move and the moving code is done right here. It isn't inherited from it's parent >:3
 
-    public Padawan(Rectangle target, int points, SimpleGfxGrid grid) {
+    public Padawan(Rectangle target, int points, SimpleGfxGrid grid, int speed, int time, int distance) {
 
-        super(target, points, grid);
+        super(target, points, grid, speed, time, distance);
     }
 
     public void moveInDirection(GridDirection direction, int distance) {

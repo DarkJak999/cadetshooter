@@ -61,6 +61,8 @@ public class SimpleGridPosition extends AbstractGridPosition {
         int dx = getCol() - iCol;
         int dy = getRow() - iRow;
 
+        //System.out.println("moving in direction" + " dx: " + dx  + "  dy: " + dy);
+
         rectangle.translate(dx, dy);
     }
 

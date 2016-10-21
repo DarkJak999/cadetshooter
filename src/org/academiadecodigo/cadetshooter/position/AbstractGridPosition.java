@@ -112,7 +112,7 @@ public abstract class AbstractGridPosition implements GridPosition {
      */
     public void moveUp(int dist) {
 
-        int maxRowsUp = dist < getRow() - SIZE ? dist : getRow() - SIZE;
+        int maxRowsUp = dist < getRow() ? dist : getRow();
         setPos(getCol(), getRow() - maxRowsUp);
 
     }
@@ -124,7 +124,7 @@ public abstract class AbstractGridPosition implements GridPosition {
      */
     public void moveDown(int dist) {
 
-        int maxRowsDown = dist > getGrid().getRows() - (getRow() + 1) ? getGrid().getRows() - (getRow() + 1) : dist;
+        int maxRowsDown = dist > (getGrid().getRows() - (getRow() + 1) - SIZE) ? (getGrid().getRows() - (getRow() + 1) - SIZE) : dist;
         setPos(getCol(), getRow() + maxRowsDown);
 
     }
@@ -136,7 +136,7 @@ public abstract class AbstractGridPosition implements GridPosition {
      */
     public void moveLeft(int dist) {
 
-        int maxRowsLeft = dist < getCol() ? dist : getCol();
+        int maxRowsLeft = dist < getCol() ? dist : (getCol());
         setPos(getCol() - maxRowsLeft, getRow());
 
     }
@@ -147,7 +147,7 @@ public abstract class AbstractGridPosition implements GridPosition {
      * @param dist the number of positions to move
      */
     public void moveRight(int dist) {
-        int maxRowsRight = dist > getGrid().getCols() - (getCol() + 1) ? getGrid().getCols() - (getCol() + 1) : dist;
+        int maxRowsRight = dist > (getGrid().getCols() - (getCol() + 1) - SIZE) ? (getGrid().getCols() - (getCol() + 1) - SIZE) : dist;
         setPos(getCol() + maxRowsRight, getRow());
     }
 

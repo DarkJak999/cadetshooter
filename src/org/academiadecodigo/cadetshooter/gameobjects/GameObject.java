@@ -18,20 +18,35 @@ abstract public class GameObject {
 
     private Rectangle target;
     private boolean flag;
+    private boolean clicked;
     private int points;
     private SimpleGridPosition pos;
     private SimpleGfxGrid grid;
     GridDirection currentDirection;
+    private int speed;
+    private int time;
+    private int distance;
 
-    public GameObject(Rectangle target, int points, SimpleGfxGrid grid) {
+    public GameObject(Rectangle target, int points, SimpleGfxGrid grid, int speed, int time, int distance) {
         this.target = target;
         this.pos = new SimpleGridPosition(target.getX(), target.getY(), grid);
         this.points = points;
         this.currentDirection = GridDirection.values()[(int) (Math.random() * GridDirection.values().length)];
+        this.time = time;
+        this.speed = speed;
+        this.distance = distance;
     }
 
     public SimpleGridPosition getPos() {
         return pos;
+    }
+
+    public boolean isClicked() {
+        return clicked;
+    }
+
+    public void setClicked(boolean clicked) {
+        this.clicked = clicked;
     }
 
     public void setPos(SimpleGridPosition pos) {
@@ -60,6 +75,30 @@ abstract public class GameObject {
 
     public void setUsed(boolean flag) {
         this.flag = flag;
+    }
+
+    public int getDistance() {
+        return distance;
+    }
+
+    public void setDistance(int distance) {
+        this.distance = distance;
+    }
+
+    public int getSpeed() {
+        return speed;
+    }
+
+    public void setSpeed(int speed) {
+        this.speed = speed;
+    }
+
+    public int getTime() {
+        return time;
+    }
+
+    public void setTime(int time) {
+        this.time = time;
     }
 
     public int getPoints() {

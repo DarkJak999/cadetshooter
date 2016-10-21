@@ -19,63 +19,71 @@ public class Game implements MouseHandler {
 
     private static final int FIX = 25; //This is the pedreiro fix to the simple graphics Y coordinate bug
     private static final int SIZE = 100;
-    GameObject[] gameObjects;
-    GameObject target;
-    SimpleGfxGrid display;
-    int score;
+    private GameObject target;
+    private SimpleGfxGrid display;
+    private int score;
+    private int lives;
 
 
     public void init() {
 
-        gameObjects = new GameObject[10];
         Rectangle rect;
         this.score = 0;
 
         display = new SimpleGfxGrid(1280, 760);
         display.init();
+        this.lives = 10;
 
-        for (int i = 0; i < gameObjects.length; i++) {
-            int randX = RNG.getRandom(0, display.getCols() - SIZE);
-            int randY = RNG.getRandom(0, display.getRows() - SIZE);
-            rect = new Rectangle(randX, randY, SIZE, SIZE);
-            gameObjects[i] = new Padawan(rect, 100, display);
-        }
     }
 
     public void start() throws InterruptedException {
 
         Mouse m = new Mouse(this);
         int count = 0;
+        int howManyLives = lives;
         m.addEventListener(MouseEventType.MOUSE_CLICKED);
         m.addEventListener(MouseEventType.MOUSE_MOVED);
 
 
-        target = gameObjects[0];
-        target.getTarget().fill();
+        while(lives > 0) {
 
-        while(true)
-            target.moveInDirection(GridDirection.DOWN, 1);
-
-        /*
-
-        for (int i = 0; i < gameObjects.length; i++) {
-
-            count = 0;
-            target = gameObjects[i];
-            target.getTarget().fill();
-
-            target.moveInDirection(GridDirection.RIGHT,5);
-
-            System.out.println(count);
-            Thread.sleep(2000);
-            target.getTarget().delete();
+            target = createGameObject();
 
 
-            System.out.println(score);
+            while(!target.isUsed()){
+
+                count = 0;
+
+                target.getTarget().fill();
+
+                while(count < target.getDistance()){
+
+                    target.moveInDirection(target.getCurrentDirection(), 1);
+
+                    Thread.sleep(target.getTime());
+
+                    if(target.isUsed())
+                        break;
+
+                    count++;
+                }
+                target.getTarget().delete();
+                target.setUsed(true);
+            }
+
+            if(target.isClicked())
+                continue;
+            lives--;
+            howManyLives--;
+            System.out.println("here " + howManyLives);
+
+
         }
 
-        */
+        System.out.println(score);
+        System.out.println("Game Over");
     }
+
 
     public void mouseClicked(MouseEvent e) {
 
@@ -86,9 +94,10 @@ public class Game implements MouseHandler {
 
         if (e.getX() > target.getTarget().getX() && e.getX() < (target.getTarget().getX() + target.getTarget().getWidth())
 
-                && e.getY()+FIX > target.getTarget().getY() + FIX && e.getY() + FIX < (target.getTarget().getY() + FIX + target.getTarget().getHeight())) {
+                && e.getY() + FIX > target.getTarget().getY() + FIX && e.getY() + FIX < (target.getTarget().getY() + FIX + target.getTarget().getHeight())) {
             increaseScore();
             target.setUsed(true);
+            target.setClicked(true);
 
             target.getTarget().delete();
             System.out.println("Clicked on target");
@@ -105,6 +114,63 @@ public class Game implements MouseHandler {
         }
 
     }
+
+    public GameObject createGameObject() {
+
+
+        GameObject gObj;
+
+        int randX = RNG.getRandom(0, display.getCols() - SIZE);
+        int randY = RNG.getRandom(0, display.getRows() - SIZE);
+        Rectangle rekt = new Rectangle(randX,randY, SIZE, SIZE);
+
+        //randomize a padawan, get it onto gObj and return the damn thing
+
+
+        if(score < 100){
+            //Padawan(target, points, grid, speed, time, distance
+            return new Padawan(rekt, 10 ,display,20, 50, 30);
+        }
+        if(score < 200){
+            System.out.println("next level, level 2");
+            return new Padawan(rekt, 10, display, 20, 50, 60);
+        }
+        if(score < 300){
+            System.out.println("next level, level 3");
+            return new Padawan(rekt, 15, display, 30, 50, 60);
+        }
+        if(score < 400) {
+            System.out.println("next level, level 4");
+            return new Padawan(rekt, 15, display, 35, 50, 60);
+        }
+        if(score < 500){
+            System.out.println("next level, level 5");
+            return new Padawan(rekt, 20, display, 40, 50, 60);
+        }
+        if(score < 600){
+            System.out.println("next level, level 6");
+            return new Padawan(rekt, 20, display, 45, 50, 60);
+        }
+        if(score < 700){
+            System.out.println("next level, level 7");
+            return new Padawan(rekt, 25, display, 50, 50, 60);
+        }
+        if(score < 800){
+            System.out.println("next level, level 8");
+            return new Padawan(rekt, 25, display, 55, 50, 60);
+        }
+        if(score < 900){
+            System.out.println("next level, level 9");
+            return new Padawan(rekt, 30, display, 60, 50, 60);
+        }
+        if(score < 1000){
+            System.out.println("next level, level 10");
+            return new Padawan(rekt, 30, display, 65, 50, 60);
+        }
+        System.out.println("morri");
+        return null;
+    }
+
 
     @Override
     public void mouseMoved(MouseEvent e) {

@@ -13,7 +13,7 @@ public class SimpleGfxGrid implements Grid {
 
     public static final int SIZE = 100;
     public static final int PADDING = 10;
-    public static final int CELL_SIZE = 10;
+    public static final int CELL_SIZE = 1;
     private int cols;
     private int rows;
     private Rectangle display;
