@@ -1,7 +1,9 @@
 package org.academiadecodigo.cadetshooter;
 
+import org.academiadecodigo.cadetshooter.gameobjects.Direction;
 import org.academiadecodigo.cadetshooter.gameobjects.GameObject;
 import org.academiadecodigo.cadetshooter.gameobjects.Padawan;
+import org.academiadecodigo.cadetshooter.position.Grid;
 import org.academiadecodigo.cadetshooter.position.GridDirection;
 import org.academiadecodigo.cadetshooter.simplegfx.SimpleGfxGrid;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
@@ -48,23 +50,31 @@ public class Game implements MouseHandler {
         m.addEventListener(MouseEventType.MOUSE_MOVED);
 
 
+        target = gameObjects[0];
+        target.getTarget().fill();
+
+        while(true)
+            target.moveInDirection(GridDirection.DOWN, 1);
+
+        /*
+
         for (int i = 0; i < gameObjects.length; i++) {
 
             count = 0;
             target = gameObjects[i];
             target.getTarget().fill();
-            while (count < 10) {
-                target.moveInDirection(target.getCurrentDirection(),100);
-                Thread.sleep(10);
-                count++;
-            }
-            System.out.println(i);
-            //Thread.sleep(2000);
+
+            target.moveInDirection(GridDirection.RIGHT,5);
+
+            System.out.println(count);
+            Thread.sleep(2000);
             target.getTarget().delete();
 
 
             System.out.println(score);
         }
+
+        */
     }
 
     public void mouseClicked(MouseEvent e) {

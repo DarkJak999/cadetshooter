@@ -34,5 +34,28 @@ public class Padawan extends GameObject implements Movable{
 
     }
 
+    public void myMove(GridDirection direction, int distance){
+
+        int count = 0;
+
+        int iX = getTarget().getX();
+        int iY = getTarget().getY();
+
+        while(count < distance){
+
+            getPos().moveInDirection(direction, 5);
+
+            int dx = getTarget().getX() - iX;
+            int dy = getTarget().getY() - iY;
+
+            getTarget().translate(dx, dy);
+
+            iX = getTarget().getX();
+            iY = getTarget().getY();
+
+            count++;
+        }
+    }
+
 
 }

@@ -82,6 +82,8 @@ abstract public class GameObject {
         this.currentDirection = currentDirection;
     }
 
+    public abstract void myMove(GridDirection direction, int distance);
+
     public GridDirection chooseDirection() {
 
         // Let's move in the same direction by default

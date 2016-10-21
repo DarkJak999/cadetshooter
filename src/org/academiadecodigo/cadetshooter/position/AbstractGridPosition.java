@@ -5,6 +5,7 @@ package org.academiadecodigo.cadetshooter.position;
  */
 public abstract class AbstractGridPosition implements GridPosition {
 
+     private static final int SIZE = 100;
     private int col;
     private int row;
     private GridColor color;
@@ -111,7 +112,7 @@ public abstract class AbstractGridPosition implements GridPosition {
      */
     public void moveUp(int dist) {
 
-        int maxRowsUp = dist < getRow() ? dist : getRow();
+        int maxRowsUp = dist < getRow() - SIZE ? dist : getRow() - SIZE;
         setPos(getCol(), getRow() - maxRowsUp);
 
     }
