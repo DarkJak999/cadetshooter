@@ -11,7 +11,8 @@ public class Main {
 
         g.init();
         try{
-            g.start();
+            //g.start();
+            g.startMenu();
         }catch(Exception ex){
             System.out.println(ex.getMessage());
         }

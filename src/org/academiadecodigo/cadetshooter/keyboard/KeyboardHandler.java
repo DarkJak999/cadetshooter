@@ -12,12 +12,12 @@ public interface KeyboardHandler {
      * @see java.awt.event.KeyListener#keyPressed(KeyEvent)
      * @param e the event
      */
-    public void keyPressed(KeyboardEvent e);
+    public void keyPressed(KeyboardEvent e) throws InterruptedException;
 
     /**
      * @see java.awt.event.KeyListener#keyReleased(KeyEvent)
      * @param e the event
      */
-    public void keyReleased(KeyboardEvent e);
+    public void keyReleased(KeyboardEvent e) throws InterruptedException;
 
 }

@@ -69,7 +69,11 @@ public class Keyboard implements KeyListener {
             KeyboardEvent ke = iterator.next();
             if (ke.getKeyboardEventType() == KeyboardEventType.KEY_PRESSED &&
                     ke.getKey() == e.getKeyCode()) {
-                handler.keyPressed(ke);
+                try {
+                    handler.keyPressed(ke);
+                } catch (InterruptedException e1) {
+                    e1.printStackTrace();
+                }
             }
         }
     }
@@ -89,7 +93,11 @@ public class Keyboard implements KeyListener {
             KeyboardEvent ke = iterator.next();
             if (ke.getKeyboardEventType() == KeyboardEventType.KEY_RELEASED &&
                     ke.getKey() == e.getKeyCode()) {
-                handler.keyReleased(ke);
+                try {
+                    handler.keyReleased(ke);
+                } catch (InterruptedException e1) {
+                    e1.printStackTrace();
+                }
             }
         }
     }

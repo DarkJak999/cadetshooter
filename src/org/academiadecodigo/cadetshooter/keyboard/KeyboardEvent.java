@@ -13,6 +13,7 @@ public class KeyboardEvent {
     public static final int KEY_RIGHT = KeyEvent.VK_RIGHT;
     public static final int KEY_UP = KeyEvent.VK_UP;
     public static final int KEY_DOWN = KeyEvent.VK_DOWN;
+    public static final int KEY_ESC = KeyEvent.VK_ESCAPE;
 
     /** Numbers */
     public static final int KEY_0 = KeyEvent.VK_0;
