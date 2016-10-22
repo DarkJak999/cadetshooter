@@ -15,6 +15,7 @@ import org.academiadecodigo.simplegraphics.mouse.Mouse;
 import org.academiadecodigo.simplegraphics.mouse.MouseEvent;
 import org.academiadecodigo.simplegraphics.mouse.MouseEventType;
 import org.academiadecodigo.simplegraphics.mouse.MouseHandler;
+import org.academiadecodigo.simplegraphics.pictures.*;
 
 import java.awt.*;
 
@@ -25,7 +26,11 @@ public class Game implements MouseHandler, KeyboardHandler {
 
 
 
-
+    private static final String PATH1 = "";
+    private static final String PATH2 = "";
+    private static final String PATH3 = "";
+    private static final String PATH4 = "";
+    private static final String PATH5 = "";
     private static final int FIX = 25; //This is the pedreiro fix to the simple graphics Y coordinate bug
     private static final int SIZE = 100;
     private GameObject target;
@@ -77,9 +82,12 @@ public class Game implements MouseHandler, KeyboardHandler {
         k.addEventListener(end);
 
 
+        System.out.println("Let's start the game");
+
         while(lives > 0) {
 
             target = createGameObject();
+            System.out.println("target created");
 
 
             while(!target.isUsed()){
@@ -87,6 +95,7 @@ public class Game implements MouseHandler, KeyboardHandler {
                 count = 0;
 
                 target.getTarget().fill();
+                System.out.println("target distance " + target.getDistance());
 
                 while(count < target.getDistance()){
 
@@ -141,21 +150,34 @@ public class Game implements MouseHandler, KeyboardHandler {
     }
 
 
-    public void  keyPressed (KeyboardEvent k) throws InterruptedException {
-
-
-
-
-        }
-
-    @Override
-    public void keyReleased(KeyboardEvent k) throws InterruptedException {
+    public synchronized void  keyPressed (KeyboardEvent k) throws InterruptedException {
 
         switch (k.getKey()){
             case KeyboardEvent.KEY_SPACE:
 
                 System.out.println("space");
-                this.start();
+                //this.start();
+                break;
+
+            case KeyboardEvent.KEY_ESC:
+                System.out.println("esc");
+                //System.exit(0);
+                // end game
+                break;
+
+        }
+
+
+        }
+
+    @Override
+    public synchronized void keyReleased(KeyboardEvent k) throws InterruptedException {
+
+        switch (k.getKey()){
+            case KeyboardEvent.KEY_SPACE:
+
+                System.out.println("space");
+                start();
                 break;
 
             case KeyboardEvent.KEY_ESC:
@@ -248,26 +270,37 @@ public class Game implements MouseHandler, KeyboardHandler {
         int randX = RNG.getRandom(0, display.getCols() - SIZE);
         int randY = RNG.getRandom(0, display.getRows() - SIZE);
         Rectangle rekt = new Rectangle(randX,randY, SIZE, SIZE);
+        Picture pic;
 
         if(random <= 10){
             //padawan (rectange, points, grid, speed, time, distance)
             System.out.println("here 1");
+
+            //pic = new Picture(randX,randY, PATH1);
             return new Padawan(rekt, 10 ,display,speed, 50, 30);
         }
         else if(random >= 11 && random <= 34){
             System.out.println("here 2");
+
+            //pic = new Picture(randX,randY, PATH2);
             return new Padawan(rekt, 15, display, speed, 50, 60);
         }
         else if(random >= 35 && random <= 49){
             System.out.println("here 3");
+
+            //pic = new Picture(randX,randY, PATH3);
             return new Padawan(rekt, 25, display, speed, 50, 60);
         }
         else if(random >= 50 && random <= 89){
             System.out.println("here 4");
+
+            //pic = new Picture(randX,randY, PATH4);
             return new Padawan(rekt, 30, display, speed, 50, 60);
         }
         else if(random >= 90 && random < 101){
             System.out.println("here 5 ");
+
+            //pic = new Picture(randX,randY, PATH5);
             return new Padawan(rekt, 50, display, 70, 50, 60);
         }
 

@@ -10,9 +10,10 @@ public class Main {
         Game g = new Game();
 
         g.init();
+
         try{
-            //g.start();
-            g.startMenu();
+            g.start();
+            //g.startMenu();
         }catch(Exception ex){
             System.out.println(ex.getMessage());
         }
