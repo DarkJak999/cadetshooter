@@ -2,17 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e75ccbca-d0bb-4b4a-8277-3ba8e0dfdd9d" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/CadetShooter/org/academiadecodigo/cadetshooter/Game.class" afterPath="$PROJECT_DIR$/out/production/CadetShooter/org/academiadecodigo/cadetshooter/Game.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/CadetShooter/org/academiadecodigo/cadetshooter/position/AbstractGridPosition.class" afterPath="$PROJECT_DIR$/out/production/CadetShooter/org/academiadecodigo/cadetshooter/position/AbstractGridPosition.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/CadetShooter/org/academiadecodigo/cadetshooter/simplegfx/SimpleGfxGrid.class" afterPath="$PROJECT_DIR$/out/production/CadetShooter/org/academiadecodigo/cadetshooter/simplegfx/SimpleGfxGrid.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/CadetShooter/org/academiadecodigo/cadetshooter/simplegfx/SimpleGridPosition.class" afterPath="$PROJECT_DIR$/out/production/CadetShooter/org/academiadecodigo/cadetshooter/simplegfx/SimpleGridPosition.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/academiadecodigo/cadetshooter/Game.java" afterPath="$PROJECT_DIR$/src/org/academiadecodigo/cadetshooter/Game.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/academiadecodigo/cadetshooter/gameobjects/GameObject.java" afterPath="$PROJECT_DIR$/src/org/academiadecodigo/cadetshooter/gameobjects/GameObject.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/academiadecodigo/cadetshooter/gameobjects/Padawan.java" afterPath="$PROJECT_DIR$/src/org/academiadecodigo/cadetshooter/gameobjects/Padawan.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/academiadecodigo/cadetshooter/position/AbstractGridPosition.java" afterPath="$PROJECT_DIR$/src/org/academiadecodigo/cadetshooter/position/AbstractGridPosition.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/academiadecodigo/cadetshooter/simplegfx/SimpleGfxGrid.java" afterPath="$PROJECT_DIR$/src/org/academiadecodigo/cadetshooter/simplegfx/SimpleGfxGrid.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/academiadecodigo/cadetshooter/simplegfx/SimpleGridPosition.java" afterPath="$PROJECT_DIR$/src/org/academiadecodigo/cadetshooter/simplegfx/SimpleGridPosition.java" />
     </list>
     <ignored path="CadetShooter.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -48,8 +38,8 @@
       <file leaf-file-name="Game.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/org/academiadecodigo/cadetshooter/Game.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1558">
-              <caret line="47" column="21" selection-start-line="47" selection-start-column="21" selection-end-line="47" selection-end-column="21" />
+            <state relative-caret-position="107">
+              <caret line="158" column="54" selection-start-line="158" selection-start-column="54" selection-end-line="158" selection-end-column="54" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -835,12 +825,12 @@
       <workItem from="1476909343480" duration="5953000" />
       <workItem from="1476992897608" duration="3992000" />
       <workItem from="1477061084956" duration="12694000" />
-      <workItem from="1477073947799" duration="6067000" />
+      <workItem from="1477073947799" duration="7568000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="37309000" />
+    <option name="totallyTimeSpent" value="38810000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1920" height="977" extended-state="6" />
@@ -854,7 +844,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.37288135" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.37288135" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32892805" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1391,8 +1381,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/org/academiadecodigo/cadetshooter/Game.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1558">
-          <caret line="47" column="21" selection-start-line="47" selection-start-column="21" selection-end-line="47" selection-end-column="21" />
+        <state relative-caret-position="107">
+          <caret line="158" column="54" selection-start-line="158" selection-start-column="54" selection-end-line="158" selection-end-column="54" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

@@ -167,7 +167,7 @@ public class Game implements MouseHandler {
             System.out.println("next level, level 10");
             return new Padawan(rekt, 30, display, 65, 50, 60);
         }
-        System.out.println("morri");
+        System.out.println("CONGRATS! YOU WON!!!");
         return null;
     }
 
